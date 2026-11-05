@@ -2,6 +2,7 @@
 font pixel code normal regular 18
 exec_always swaync
 exec_always xrandr --output $(xrandr | grep -m 1 XWAYLAND | awk '{print $1;}') --primary
+exec_always wl-paste --watch cliphist store
 
 # ===================== MONITORS ==================================
 # enter `swaymsg -t get_outputs` to get your monitor details.
@@ -38,15 +39,16 @@ bindsym $mod+q kill
 bindsym $mod+Shift+c $refresh
 bindsym $mod+h bar mode toggle
 bindsym F11 fullscreen
-bindsym $mod+n exec swaync-client -t -sw
+bindsym $mod+n exec rednotebook
+bindsym $mod+Shift+n exec swaync-client -t -sw
 
 # ===================== IDLE LOCK ==================================
-bindsym $mod+Shift+l exec swaylock -C /home/simonr/.config/swaylock/config
+bindsym $mod+Shift+l exec /$HOME/.config/sway/swaylock.sh
 
 exec swayidle -w \
-   timeout 300 'swaylock -C /home/simonr/.config/swaylock/config' \
+   timeout 300 'exec /$HOME/.config/sway/swaylock.sh' \
    timeout 300 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-   before-sleep 'swaylock -C /home/simonr/.config/swaylock/config'
+   before-sleep 'exec /$HOME/.config/sway/swaylock.sh'
 
 # ===================== EXIT SWAY =======================================
 bindsym $mod+Shift+e exec swaynag -t warning -m "Are you sure you want to exit sway?" -B "Yes, EXIT!" "swaymsg exit" --font="Pixel Code bold 30" --background=#640000 --border=#ff0000 --border-bottom=#ff0000 --text=#ff13ff --button-text=#ff13ff --button-background=#550000 --layer=overlay --button-gap=30 --button-border-size=10 --border-bottom-size=10 --message-padding=10
