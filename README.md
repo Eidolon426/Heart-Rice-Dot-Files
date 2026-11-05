@@ -10,7 +10,7 @@ Dependencies
 * Nemo - File manager,
 * Wofi - App launcher,
 * Swaync - Notification manager,
-* Swayidle & Swaylock - Idle lock,
+* Swayidle & Swaylock & Swaylock-effects - Idle lock,
 * swappy & grim - screenshots
 * Rencal - Calendar
 * Rednotebook - notes
