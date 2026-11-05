@@ -7,7 +7,7 @@
  	   "margin-right": 20,
  	   "id": "bar-1",
 	   "modules-right": ["idle_inhibitor", "custom/arrow2", "pulseaudio", "custom/arrow2", "battery", "custom/arrow2", "clock"],
-       "modules-left": ["custom/power", "custom/file", "custom/notification", "tray", "sway/scratchpad", "custom/arrow", "sway/workspaces"],
+       "modules-left": ["custom/power", "custom/file", "custom/notebook", "custom/notification", "tray", "sway/scratchpad", "custom/arrow", "sway/workspaces"],
 
     "battery": {
 	 "bat": "BAT0",
@@ -73,9 +73,14 @@
             "Shutdown": "shutdown",
             "Reboot": "reboot",
             "Log Out": "swaymsg exit",
-            "Suspend": "systemctl suspend",
+            "Suspend": "exec /$HOME/.config/sway/swaylock.sh",
             "Update": "kitty sudo /$HOME/.config/waybar/updates.sh"
         },
+    },
+    "custom/notebook": {
+        "format": "♬",
+        "on-click": "exec rednotebook",
+        "tooltip": false,
     },
     "custom/notification": {
         "tooltip": false,
@@ -84,7 +89,7 @@
         "format": "{icon}",
         "format-icons": {
             "notification": "<span foreground='red'>♥︎</span>",
-            "none": "‎♡",
+            "none": "‎‎‎♡",
             "dnd-notification": "<span foreground='red'><sup></sup></span>",
             "dnd-none": "",
             "inhibited-notification": "<span foreground='red'><sup></sup></span>",
